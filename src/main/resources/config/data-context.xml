@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/jee
+                           http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <context:annotation-config></context:annotation-config>
+
+    <context:component-scan base-package="lc.data"></context:component-scan>
+
+    <tx:annotation-driven></tx:annotation-driven>
+
+    <beans profile="production">
+        <bean id="transactionManager"
+              class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+            <property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+
+        <!-- Hibernate's session factory -->
+        <bean id="sessionFactory"
+              class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"></property>
+            <property name="hibernateProperties">
+                <props>
+                    <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                </props>
+            </property>
+            <property name="packagesToScan">
+                <list>
+                    <value>lc.data</value>
+                </list>
+            </property>
+        </bean>
+
+        <!-- used to turn hibernate exceptions into spring exceptions for more convenient handling, just annotate DAO with @Repository -->
+        <bean id="exceptionTranslator"
+              class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
+        </bean>
+
+
+        <jee:jndi-lookup expected-type="javax.sql.DataSource"
+                         id="dataSource"
+                         jndi-name="jdbc/lovedcreations">
+        </jee:jndi-lookup>
+    </beans>
+
+
+</beans>

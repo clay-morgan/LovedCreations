@@ -1,0 +1,13 @@
+
+
+*.class
+out/*
+target/*
+
+*.iws
+.idea/libraries/*
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dataSources.xml
+.idea/dataSources.ids
+.idea/codeStyleSettings.xml

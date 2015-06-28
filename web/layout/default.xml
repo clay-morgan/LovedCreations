@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Loved Creations Portal -->
+    <definition name="layout.base" template="/templates/layout.jsp">
+        <put-attribute name="include" value=""></put-attribute>
+        <put-attribute name="title" value="Loved Creations"></put-attribute>
+        <put-attribute name="header" value="/tiles/header.jsp"></put-attribute>
+        <put-attribute name="content" value="/tiles/content.jsp"></put-attribute>
+        <put-attribute name="footer" value="/tiles/footer.jsp"></put-attribute>
+    </definition>
+    <definition name="login" extends="layout.base">
+        <put-attribute name="title" value="Loved Creations - Login"></put-attribute>
+        <put-attribute name="content" value="/tiles/login.jsp"></put-attribute>
+    </definition>
+    <definition name="loggedOut" extends="layout.base">
+        <put-attribute name="title" value="Loved Creations - Logged Out"></put-attribute>
+        <put-attribute name="content" value="/tiles/loggedOut.jsp"></put-attribute>
+    </definition>
+    <definition name="error" extends="layout.base">
+        <put-attribute name="title" value="Loved Creations - Error"></put-attribute>
+        <put-attribute name="content" value="/tiles/error.jsp"></put-attribute>
+    </definition>
+    <definition name="home" extends="layout.base">
+        <put-attribute name="title" value="Loved Creations - Home"></put-attribute>
+        <put-attribute name="content" value="/tiles/home.jsp"></put-attribute>
+    </definition>
+    <definition name="addCreation" extends="layout.base">
+        <put-attribute name="title" value="Add a New Loved Creation"></put-attribute>
+        <put-attribute name="content" value="/tiles/addCreation.jsp"></put-attribute>
+    </definition>
+    <definition name="editCreation" extends="layout.base">
+        <put-attribute name="title" value="Edit a Loved Creation"></put-attribute>
+        <put-attribute name="content" value="/tiles/editCreation.jsp"></put-attribute>
+    </definition>
+    <definition name="viewCreation" extends="layout.base">
+        <put-attribute name="title" value="Loved Creations"></put-attribute>
+        <put-attribute name="content" value="/tiles/viewCreation.jsp"></put-attribute>
+    </definition>
+    <definition name="addPhoto" extends="layout.base">
+        <put-attribute name="title" value="Add A Photo"></put-attribute>
+        <put-attribute name="content" value="/tiles/addPhoto.jsp"></put-attribute>
+    </definition>
+    <definition name="redirectHome" template="/templates/redirectHome.jsp">
+    </definition>
+
+
+</tiles-definitions>
